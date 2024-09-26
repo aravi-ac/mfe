@@ -18,14 +18,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: npm install
-      - run: npm run build
 
-      - name: Secrets
-        run: echo `${{ secrets }}`
+      - name: Install dependencies
+        run: npm install
 
-      - name: Credentials
-        run: echo `${{ secrets.AWS_S3_BUCKET_NAME }}`
+      - name: Build app
+        run: npm run build
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
