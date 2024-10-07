@@ -1,4 +1,4 @@
-name: deplyoment-conatiner-app
+name: deplyoment-marketing-app
 
 on:
   push:
@@ -6,11 +6,11 @@ on:
       - main
     
     paths:
-      - apps/container/**
+      - apps/marketing/**
 
 defaults:
   run:
-    working-directory: apps/container
+    working-directory: apps/marketing
 
 jobs:
   build:
@@ -33,7 +33,7 @@ jobs:
           aws-region: ap-south-1  # Change this to your region of your bucket
 
       - name: Sync to S3
-        run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/container/latest
+        run: aws s3 sync dist s3://${{ secrets.AWS_S3_BUCKET_NAME }}/marketing/latest
 
       - name: Create Invalidation
-        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/container/latest/index.html"
+        run: aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DISTRIBUTION_ID }} --paths "/marketing/latest/remoteEntry.js"
