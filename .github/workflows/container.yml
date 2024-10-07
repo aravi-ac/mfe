@@ -25,6 +25,10 @@ jobs:
       - name: Build app
         run: npm run build
 
+      - run:  echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+      - run:  echo ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run:  echo ${{ secrets.AWS_S3_BUCKET_NAME }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
