@@ -1,3 +1,3 @@
 import('./bootstrap')
 
-console.log('Hi from Container!')
+console.log('Hi from Container!!')
